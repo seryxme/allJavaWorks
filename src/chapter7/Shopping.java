@@ -55,7 +55,7 @@ public class Shopping {
 
     public void expandArrays() {
         if (counter == items.length) {
-            String[]  newItems = new String[items.length * 2];
+            String[] newItems = new String[items.length * 2];
             int[] newQuantities = new int[quantities.length * 2];
             double[] newPrice = new double[price.length * 2];
             double[] newTotal = new double[totalPrice.length * 2];
