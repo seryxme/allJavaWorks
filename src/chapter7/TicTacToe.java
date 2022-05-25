@@ -7,6 +7,9 @@ public class TicTacToe {
     private String[][] options = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
     private int playerOne;
     private int playerTwo;
+    private int playerOneScore;
+    private int playerTwoScore;
+
 
     Scanner optionReader = new Scanner(System.in);
 
@@ -17,6 +20,7 @@ public class TicTacToe {
 
     public void gameIntro() {
         System.out.println("""
+                
                 Tic-Tac-Toe is a game with 9 slots to place X's or O's.
                 If you can line up three consecutive X's or O's vertically,
                  horizontally or diagonally, you win!
@@ -79,7 +83,11 @@ public class TicTacToe {
             case 3 -> {
                 if (Objects.equals(options[0][2], " ")) {
                     options[0][2] = "X";
-                } else System.out.println("Slot already occupied. Select another slot.");
+                } else {
+                    System.out.println("Slot already occupied. Select another slot.");
+                    playerOneReplay();
+                }
+
             }
 
             case 4 -> {
@@ -331,10 +339,14 @@ public class TicTacToe {
 
     public void endWinGame (int playerNumber) {
         System.out.printf("""
-                Player %d wins! Congratulations! Go again?
+                
+                Player %d wins! Congratulations!
+                Scores: %d - %d
+                
+                Go again?
                 1. Yes
                 2. No
-                """, playerNumber);
+                """, playerNumber, playerOneScore, playerTwoScore);
         int response = optionReader.nextInt();
 
         switch (response) {
@@ -352,7 +364,11 @@ public class TicTacToe {
 
     public void endNoWinGame () {
         System.out.println("""
-                Game over! No winners today. Go again?
+                
+                Game over! No winners this round.
+                Scores: %d - %d
+                
+                Go again?
                 1. Yes
                 2. No
                 """);
@@ -367,7 +383,7 @@ public class TicTacToe {
                 }
                 playGame();
             }
-            case 2 -> System.out.println("Thank you for playing.");
+            case 2 -> System.out.println("Thank you for playing.\n\nGoodbye!");
         }
     }
 
@@ -379,16 +395,22 @@ public class TicTacToe {
 
             if (checkPlayerOneWin()) {
                 displayGame();
+                playerOneScore++;
                 endWinGame(1);
                 break;
             }
 
             displayGame();
 
+            if (!checkSlots()) {
+                break;
+            }
+
             playerTwoPlay();
 
             if (checkPlayerTwoWin()) {
                 displayGame();
+                playerTwoScore++;
                 endWinGame(2);
                 break;
             }
