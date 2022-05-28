@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TicTacToeTest {
+    TicTacToe game;
 
     @BeforeEach
     void setUp() {
-        TicTacToe game = new TicTacToe();
+        game = new TicTacToe();
     }
 
     @Test
     void checkObjectIsInitializedTest() {
-        TicTacToe game = new TicTacToe();
 
         String result = game.getSlotValue(0, 0);
         assertEquals(" ", result);
@@ -22,7 +22,6 @@ class TicTacToeTest {
 
     @Test
     void checkPlayerOneGameTest() {
-        TicTacToe game = new TicTacToe();
 
         game.setSlotValue(0,0,"X");
 
@@ -36,7 +35,6 @@ class TicTacToeTest {
 
     @Test
     void checkPlayerTwoGameTest() {
-        TicTacToe game = new TicTacToe();
 
         game.setSlotValue(0,0, "O");
         String result = game.getSlotValue(0, 0);
@@ -49,7 +47,6 @@ class TicTacToeTest {
 
     @Test
     void slotOccupiedTest() {
-        TicTacToe game = new TicTacToe();
 
         game.setSlotValue(0,1, "X");
 
@@ -61,7 +58,6 @@ class TicTacToeTest {
 
     @Test
     void slotCheckTest() {
-        TicTacToe game = new TicTacToe();
 
         game.setSlotValue(0,0,  "X");
 
@@ -74,7 +70,6 @@ class TicTacToeTest {
 
     @Test
     void slotsFilledCheckTest() {
-        TicTacToe game = new TicTacToe();
 
         game.setSlotValue(0,0,  "X");
         game.setSlotValue(1,0,"O");
@@ -93,7 +88,6 @@ class TicTacToeTest {
 
     @Test
     void checkWinTest() {
-        TicTacToe game = new TicTacToe();
 
         game.setSlotValue(0,0,  "X");
         game.setSlotValue(1,0,"O");
@@ -104,7 +98,7 @@ class TicTacToeTest {
 
         boolean gameState = game.checkSlots();
 
-        assertFalse(gameState);
+        assertTrue(gameState);
     }
 
 }

@@ -363,7 +363,7 @@ public class TicTacToe {
     }
 
     public void endNoWinGame () {
-        System.out.println("""
+        System.out.printf("""
                 
                 Game over! No winners this round.
                 Scores: %d - %d
@@ -371,7 +371,7 @@ public class TicTacToe {
                 Go again?
                 1. Yes
                 2. No
-                """);
+                """, playerOneScore, playerTwoScore);
         int response = optionReader.nextInt();
 
         switch (response) {
