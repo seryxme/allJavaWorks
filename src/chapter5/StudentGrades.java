@@ -9,7 +9,7 @@ public class StudentGrades {
         Scanner dataReader = new Scanner(System.in);
 
         int counter = 5;
-        int gradeNumber = 0;
+        int gradeNumber;
         int studentNumber = 0;
         int aCounter = 0;
         int bCounter = 0;

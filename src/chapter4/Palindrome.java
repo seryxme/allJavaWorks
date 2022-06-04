@@ -24,7 +24,7 @@ public class Palindrome {
 
         int secondNumber = lastDigit * 10000 + fourthDigit * 1000 + thirdDigit * 100 + secondDigit * 10 + firstDigit;
 
-        if (secondNumber - firstNumber == 0) {
+        if (secondNumber == firstNumber) {
             System.out.println(firstNumber + " is a palindrome.");
         }
         else System.out.println(firstNumber + " is not a palindrome.");
