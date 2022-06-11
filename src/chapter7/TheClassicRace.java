@@ -17,6 +17,10 @@ public class TheClassicRace {
                 Welcome to The Classic Race!
                 
                 The contenders are the Tortoise and the Hare.
+                They will be racing down the course with potential
+                slips along the way. The first to the finish line gets
+                a pail of fresh carrots and lettuce.
+                
                 Who do you support? Place your bets now!
                 
                 Press 1 to start race.
@@ -41,12 +45,14 @@ public class TheClassicRace {
                     epicRace.moveHare(harePosition - 1);
                     harePosition = epicRace.getHarePosition() + 1;
                     if (harePosition >= 70) {
+                        epicRace.displayCourse();
                         break;
                     }
 
                     epicRace.moveTortoise(tortoisePosition - 1);
                     tortoisePosition = epicRace.getTortoisePosition() + 1;
                     if (tortoisePosition >= 70) {
+                        epicRace.displayCourse();
                         break;
                     }
 
@@ -57,7 +63,7 @@ public class TheClassicRace {
 
                     epicRace.displayCourse();
 
-                    timer += 5;
+                    timer++;
                     Thread.sleep(5000);
                 }
             } catch (InterruptedException e) {

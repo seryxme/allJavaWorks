@@ -23,7 +23,7 @@ public class TheRace {
         for (int i = 0; i < 35; i++) {
             System.out.print("+----");
         }
-        System.out.println();
+        System.out.println("+");
         System.out.print("|");
         for (int i = 0; i < 35; i++) {
             System.out.printf("%s|", raceCourse[i]);
@@ -32,11 +32,11 @@ public class TheRace {
         for (int i = 0; i < 35; i++) {
             System.out.print("+----");
         }
-        System.out.println();
+        System.out.println("+");
         for (int i = 35; i < 70; i++) {
             System.out.print("+----");
         }
-        System.out.println();
+        System.out.println("+");
         System.out.print("|");
         for (int i = 35; i < 70; i++) {
             System.out.printf("%s|", raceCourse[i]);
@@ -45,7 +45,7 @@ public class TheRace {
         for (int i = 35; i < 70; i++) {
             System.out.print("+----");
         }
-
+        System.out.println("+");
     }
 
     public void moveTortoise(int position){
@@ -55,7 +55,7 @@ public class TheRace {
             case 1,2,3,4,5 -> {
                 System.out.println("Tortoise: Fast Plod.");
                 tortoisePosition = position + 3;
-                if (tortoisePosition > 69) {
+                if (tortoisePosition >= 69) {
                     System.out.println("Finish!");
                     tortoisePosition = 69;
                 }
@@ -73,7 +73,7 @@ public class TheRace {
             case 8,9,10 -> {
                 System.out.println("Tortoise: Slow Plod.");
                 tortoisePosition = position + 1;
-                if (tortoisePosition > 69) {
+                if (tortoisePosition >= 69) {
                     System.out.println("Finish!");
                     tortoisePosition = 69;
                 }
@@ -94,7 +94,7 @@ public class TheRace {
             case 3,4 -> {
                 System.out.println("\nHare: Big Hop.");
                 harePosition = position + 9;
-                if (harePosition > 69) {
+                if (harePosition >= 69) {
                     System.out.println("Finish!");
                     harePosition = 69;
                 }
@@ -112,7 +112,7 @@ public class TheRace {
             case 6,7,8 -> {
                 System.out.println("\nHare: Small Hop.");
                 harePosition = position + 1;
-                if (harePosition > 69) {
+                if (harePosition >= 69) {
                     System.out.println("Finish!");
                     harePosition = 69;
                 }
