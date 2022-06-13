@@ -1,4 +1,4 @@
-package chapter8;
+package chapter8.Diary;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ public class Entry {
     private int id;
     private String title;
     private String body;
-    private Date dateCreated;
+    private String dateCreated;
 
 //    public Entry(int id, String title) {
 //        this.id = id;
@@ -37,12 +37,12 @@ public class Entry {
         this.body = body;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
     public void setDateCreated(Date date) {
-        dateCreated = date;
+        dateCreated = String.valueOf(date);
     }
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package chapter8;
+package chapter8.Diary;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 public class Diary {
     private int id;
     private String name;
-    private Date dateCreated;
+    private String dateCreated;
     private ArrayList<Entry> entries = new ArrayList<>();
     private Entry entry = new Entry();
 
@@ -32,12 +32,12 @@ public class Diary {
         this.name = name;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDateCreated(Date date) {
+        dateCreated = String.valueOf(date);
     }
 
     public void addEntry(int index, Entry entry) {

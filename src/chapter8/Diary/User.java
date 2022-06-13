@@ -1,4 +1,4 @@
-package chapter8;
+package chapter8.Diary;
 
 import java.util.ArrayList;
 

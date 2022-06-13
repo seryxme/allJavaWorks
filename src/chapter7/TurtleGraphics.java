@@ -187,4 +187,17 @@ public class TurtleGraphics {
             turtleWrite = Write.PEN_DOWN;
         }
     }
+
+//    public void moveCheck(int steps) {
+//        switch (turtlePosition) {
+//            case FACE_FORWARD -> {
+//                if (row + steps > 19) {
+//                    System.out.println("Boundary will be exceed. Please reduce steps.");
+//                }
+//            }
+//            case FACE_BACKWARD -> turtlePosition = Position.FACE_DOWN;
+//            case FACE_DOWN -> turtlePosition = Position.FACE_FORWARD;
+//            case FACE_UP -> turtlePosition = Position.FACE_BACKWARD;
+//        }
+//    }
 }

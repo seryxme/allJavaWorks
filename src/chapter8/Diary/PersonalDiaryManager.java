@@ -1,4 +1,8 @@
-package chapter8;
+package chapter8.Diary;
+
+import chapter8.Diary.Diary;
+import chapter8.Diary.Entry;
+import chapter8.Diary.User;
 
 import java.util.Date;
 import java.util.InputMismatchException;
