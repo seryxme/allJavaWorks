@@ -46,7 +46,7 @@ public class Entry {
     }
     @Override
     public String toString() {
-        return "\nEntry Number: " + getId() + "\nTitle: " + getTitle() + "\nDate recorded: " + getDateCreated() +
-                "\nDetails: " + getBody();
+        return String.format("%nEntry Number: %d%nTitle: %s%nDate recorded: %s%nDetails: %s",
+                getId(), getTitle(), getDateCreated(), getBody());
     }
 }

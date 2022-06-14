@@ -8,8 +8,6 @@ public class Diary {
     private String name;
     private String dateCreated;
     private ArrayList<Entry> entries = new ArrayList<>();
-    private Entry entry = new Entry();
-
 //    public Diary(int id, String name) {
 //        this.id = id;
 //        this.name = name;
@@ -45,8 +43,7 @@ public class Diary {
     }
 
     public Entry getEntry(int index) {
-        entry = entries.get(index);
-        return entry;
+        return entries.get(index);
     }
 
     public void getAllEntries() {
@@ -69,7 +66,7 @@ public class Diary {
 
     @Override
     public String toString() {
-        return "\nDiary Number: " + getId() + "\nDiary Name: " + getName() + "\nDate created: " + getDateCreated() +
-                "\nNumber of entries: " + entries.size();
+        return String.format("%nDiary Number: %d%nDiary Name: %s%nDate created: %s%nNumber of entries: %d",
+                getId(), getName(), getDateCreated(), entries.size());
     }
 }
