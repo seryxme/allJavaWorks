@@ -211,6 +211,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) courseDetails();
             else adminApp();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             courseDetails();
         }
@@ -289,6 +290,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) studentApp();
             else appMenu();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             personalDetails();
         }
@@ -307,6 +309,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) studentApp();
             else appMenu();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             studentDetails();
         }
@@ -332,6 +335,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) adminApp();
             else appMenu();
         } catch (InputMismatchException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input.");
             adminApp();
         }
@@ -353,6 +357,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) deleteCourse();
             else adminApp();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             deleteCourse();
         }
@@ -378,6 +383,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) dropCourse();
             else studentApp();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             dropCourse();
         }
@@ -399,6 +405,7 @@ public class SchoolManagementSystem {
             if (userOption == 1) expelStudent();
             else adminApp();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             expelStudent();
         }
@@ -415,6 +422,7 @@ public class SchoolManagementSystem {
 
             appMenu();
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException ex) {
+            entry.nextLine();
             System.out.println("Please use only appropriate input. Start again.");
             studentWithdrawal();
         }
