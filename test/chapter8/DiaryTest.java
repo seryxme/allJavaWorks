@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiaryTest {
 
+
     @Test
     void setId() {
     }
