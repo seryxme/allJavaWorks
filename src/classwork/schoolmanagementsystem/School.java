@@ -1,5 +1,6 @@
 package classwork.schoolmanagementsystem;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class School {
@@ -76,6 +77,37 @@ public class School {
         }
         newStudents.set(index, null);
     }
+
+    public void activateCourse(int index) {
+        newCourses.get(index).changeActiveState(true);
+    }
+
+    public void deactivateCourse(int index) {
+        newCourses.get(index).changeActiveState(false);
+    }
+
+    public void activateCourse(Course course) {
+        course.changeActiveState(true);
+    }
+
+    public void deactivateCourse(Course course) {
+        course.changeActiveState(false);
+
+        int i = 0;
+        while (i < course.totalStudentsOfferingCourse()) {
+            course.getStudent(0).deleteCourse(course);
+            i = 0;
+        }
+    }
+
+    public void changeCourseType(Course course) {
+        for (Student student:newStudents) {
+            if (student.getStudentId() < 4 ) {
+                course.setCourseType(Course.CourseType.COMPULSORY);
+            } else course.setCourseType(Course.CourseType.ELECTIVE);
+        }
+    }
+
     public int totalCourses() {
         int counter = 0;
         for(Course course: newCourses) {
@@ -94,5 +126,13 @@ public class School {
             }
         }
         return counter;
+    }
+
+    public void updateStudentList(ArrayList<Student> studentList) {
+        newStudents = studentList;
+    }
+
+    public void updateCourseList(ArrayList<Course> courseList) {
+        newCourses = courseList;
     }
 }

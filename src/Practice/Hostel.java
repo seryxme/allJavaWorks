@@ -1,5 +1,7 @@
 package Practice;
 
+import java.util.InputMismatchException;
+
 public class Hostel {
    private String residentName;
    private int residentAge;
@@ -19,8 +21,11 @@ public class Hostel {
         return residentAge;
     }
 
-    public void setResidentAge(int age) {
+    public void setResidentAge(int age) throws InputMismatchException {
         residentAge = age;
+        if (age > 100) {
+            throw new ArithmeticException("age was out of range.");
+        }
         System.out.println(residentAge);
     }
 

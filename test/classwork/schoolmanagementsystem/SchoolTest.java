@@ -18,9 +18,9 @@ class SchoolTest {
         newSchool = new School("Semicolon Institute", "Yaba");
         course1 = new Course(1, "Java", "JAV101", 3);
         course2 = new Course(1, "Database", "DBS101", 3);
-        student1 = new Student("Babatunde", 1);
-        student2 = new Student("David", 2);
-        student3 = new Student("tofunmi", 3);
+        student1 = new Student("Babatunde", 1, 19, "Male");
+        student2 = new Student("David", 2, 19, "Male");
+        student3 = new Student("tofunmi", 3, 19, "Female");
     }
 
     @Test
@@ -58,6 +58,17 @@ class SchoolTest {
         newSchool.deleteStudent(0);
 
         assertEquals(1, newSchool.totalStudents());
+    }
+
+    @Test
+    public void studentExpelledIndexRemainsNull(){
+        newSchool.admitStudent(student1);
+        newSchool.admitStudent(student2);
+        newSchool.admitStudent(student3);
+
+        newSchool.deleteStudent(1);
+
+        assertNull(newSchool.getStudent(1));
     }
 
     @Test

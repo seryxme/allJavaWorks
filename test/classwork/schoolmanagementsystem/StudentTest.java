@@ -13,9 +13,10 @@ class StudentTest {
 
     @BeforeEach
     void setUp() {
+        semicolon = new School("Semicolon", "Yaba");
         java = new Course(1, "Java", "JAV101", 3);
-        student1 = new Student("Babatunde", 1);
-        student2 = new Student("David", 2);
+        student1 = new Student("Babatunde", 1, 19, "Female");
+        student2 = new Student("David", 2, 19, "Female");
     }
     @Test
     public void studentCanBeCreated(){
@@ -46,18 +47,18 @@ class StudentTest {
         assertEquals(1, student1.totalCoursesOfferedByStudent());
 
         student2.addCourse(java);
-        assertEquals(1, student1.totalCoursesOfferedByStudent());
+        assertEquals(1, student2.totalCoursesOfferedByStudent());
 
         assertEquals(2, java.totalStudentsOfferingCourse());
 
-        student1.deleteCourse(0);
-        assertEquals(0, student1.totalCoursesOfferedByStudent());
+        boolean courseDeleted = student1.deleteCourse(java);
+        assertTrue(courseDeleted);
 
         assertEquals(1, java.totalStudentsOfferingCourse());
 
     }
-    @Test
-    public void studentCanWithdraw(){
-
-    }
+//    @Test
+//    public void studentCanWithdraw(){
+//
+//    }
 }

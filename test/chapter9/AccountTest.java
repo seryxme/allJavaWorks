@@ -40,6 +40,16 @@ class AccountTest {
     public void accountConstructorIsFunctionalTest() {
 
         assertEquals("00000000001", account.getAccountNumber());
+
+        assertEquals("John Henry", account.getAccountName());
+    }
+
+    @Test
+    public void accountDetailsCanBeEditedTest() {
+
+        account.setAccountName("John Newton Henry");
+
+        assertEquals("John Newton Henry", account.getAccountName());
     }
 
     @Test

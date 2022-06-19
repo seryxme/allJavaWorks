@@ -16,11 +16,11 @@ public class CourseTest {
     @BeforeEach
     public void SetUp(){
         course = new Course(1, "Java", "JAV101", 3);
-        student = new Student("student", 200);
-        tunde = new Student("tunde", 210);
-        david = new Student("dave", 212);
-        elom = new Student("musk", 7);
-        samuel = new Student("tofunmi", 10);
+        student = new Student("student", 200, 19, "Female");
+        tunde = new Student("tunde", 210, 29, "Male");
+        david = new Student("dave", 212, 23, "Male");
+        elom = new Student("musk", 7, 25, "Male");
+        samuel = new Student("tofunmi", 10, 18, "Female");
     }
     @Test
     public void courseCanBeCreated(){

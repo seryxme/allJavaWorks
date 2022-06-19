@@ -1,7 +1,7 @@
 package chapter9;
 
 public class Customer {
-    private final int customerId;
+    private int customerId;
     private String firstName;
     private String middleName = " ";
     private String lastName;
@@ -15,7 +15,7 @@ public class Customer {
     private int accountCount;
     private Account[] myAccount = new Account[5];
     private String bank;
-    private final Bank myBank;
+    private Bank myBank;
 
     public Customer(Bank bank, int customerId, String firstName, String lastName, String phoneNumber) {
         myBank = bank;

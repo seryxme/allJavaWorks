@@ -7,7 +7,11 @@ public class Course {
     private String courseTitle;
     private String  courseCode;
     private int courseUnit;
+    private boolean activeState;
     private ArrayList<Student> newStudents;
+
+    public enum CourseType {COMPULSORY, ELECTIVE};
+    private CourseType newCourseType;
 
     public Course(int courseId, String courseTitle, String courseCode, int courseUnit) {
         this.courseId = courseId;
@@ -15,6 +19,8 @@ public class Course {
         this.courseCode = courseCode;
         this.courseUnit = courseUnit;
         newStudents = new ArrayList<>();
+        newCourseType = CourseType.ELECTIVE;
+        activeState = true;
     }
 
     public int getCourseId() {
@@ -49,6 +55,18 @@ public class Course {
         return courseUnit;
     }
 
+    public void changeActiveState(boolean activeState) {
+        this.activeState = activeState;
+    }
+
+    public CourseType getCourseType() {
+        return newCourseType;
+    }
+
+    public void setCourseType(CourseType courseType) {
+        newCourseType = courseType;
+    }
+
     public void addStudent(Student student) {
         newStudents.add(student);
     }
@@ -66,6 +84,9 @@ public class Course {
             System.out.println(student);
         }
     }
+    public ArrayList<Student> getStudentsList() {
+        return newStudents;
+    }
 
     public void deleteStudent(Student student) {
         newStudents.remove(student);
@@ -76,7 +97,8 @@ public class Course {
 
     @Override
     public String toString() {
-        return String.format("Course Id: %d%nCourse Title: %s%nCourse Code: %s%nCourse Unit: %d%n%n",
-                courseId, courseTitle, courseCode, courseUnit);
+        return String.format("Course Id: %03d%nCourse Title: %s%nCourse Code: %s%nCourse Unit: %d%n" +
+                        "Course Type: %s%nNo. of Students Offering Course: %d%n%n",
+                courseId, courseTitle, courseCode, courseUnit, newCourseType, totalStudentsOfferingCourse());
     }
 }
