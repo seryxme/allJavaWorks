@@ -3,6 +3,8 @@ package classwork.turtlegraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static classwork.turtlegraphics.Direction.*;
 
@@ -15,6 +17,7 @@ public class TurtleTest {
     @BeforeEach
     public void setUp() {
         turtle = new Turtle();
+        sketch = new SketchPad(5, 5);
     }
 
     @Test
@@ -172,5 +175,60 @@ public class TurtleTest {
         assertEquals(pos, turtle.getCurrentPosition());
     }
 
+    @Test
+    public void turtleCanWriteWhileMovingForwardWhenFacingEast() {
+        int row = turtle.getCurrentPosition().getRow();
+        int column = turtle.getCurrentPosition().getColumn();
+
+        turtle.penDown();
+        turtle.move(5, sketch);
+
+        int[][] floor = sketch.getFloor();
+
+        System.out.println(Arrays.deepToString(floor));
+
+        for (int i = column; i < column + 5; i++) {
+            assertEquals(1, floor[row][i]);
+        }
+    }
+
+    @Test
+    public void turtleCanWriteWhileMovingForwardWhenFacingSouth() {
+        int row = turtle.getCurrentPosition().getRow();
+        int column = turtle.getCurrentPosition().getColumn();
+
+        turtle.penDown();
+        turtle.turnRight();
+        turtle.move(5, sketch);
+
+        int[][] floor = sketch.getFloor();
+
+        System.out.println(Arrays.deepToString(floor));
+
+        for (int i = row; i < row + 5; i++) {
+            assertEquals(1, floor[i][column]);
+        }
+    }
+
+//    @Test
+//    public void turtleCanWriteWhileMovingForwardWhenFacingWest() {
+//        turtle.move(5, sketch);
+//
+//        int row = turtle.getCurrentPosition().getRow();
+//        int column = turtle.getCurrentPosition().getColumn();
+//
+//        turtle.penDown();
+//        turtle.turnRight();
+//        turtle.turnRight();
+//        turtle.move(5, sketch);
+//
+//        int[][] floor = sketch.getFloor();
+//
+//        System.out.println(Arrays.deepToString(floor));
+//
+//        for (int i = column; i > column - 5; i--) {
+//            assertEquals(1, floor[row][i]);
+//        }
+//    }
 
 }

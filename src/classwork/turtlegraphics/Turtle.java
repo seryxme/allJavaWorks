@@ -62,18 +62,41 @@ public class Turtle {
         }
 
     private void write(int numOfSteps, SketchPad sketchPad) {
-        sketchPad = new SketchPad(5, 5);
-        int[][] floor = new int[row][column];
+        int[][] floor = sketchPad.getFloor();
 
         switch(currentDirection) {
             case EAST -> {
-                for (int i = column; i < column + numOfSteps; i++) {
-                    floor[row][i] = 1;
+                if (!isPenUp()) {
+                    for (int i = column; i < column + numOfSteps; i++) {
+                        floor[row][i] = 1;
+                        sketchPad.setFloor(floor);
+                    }
                 }
             }
-            case WEST -> currentPosition.setColumn(column - numOfSteps);
-            case SOUTH -> currentPosition.setRow(row + numOfSteps);
-            case NORTH -> currentPosition.setRow(row - numOfSteps);
+            case WEST -> {
+                if (!isPenUp()) {
+                    for (int i = column; i > column - numOfSteps; i--) {
+                        floor[row][i] = 1;
+                        sketchPad.setFloor(floor);
+                    }
+                }
+            }
+            case SOUTH -> {
+                if (!isPenUp()) {
+                    for (int i = row; i < row + numOfSteps; i++) {
+                        floor[i][column] = 1;
+                        sketchPad.setFloor(floor);
+                    }
+                }
+            }
+            case NORTH -> {
+                if (!isPenUp()) {
+                    for (int i = row; i < row - numOfSteps; i--) {
+                        floor[i][column] = 1;
+                        sketchPad.setFloor(floor);
+                    }
+                }
+            }
         }
     }
 
