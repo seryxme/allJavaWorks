@@ -129,9 +129,9 @@ public class TurtleTest {
     public void turtleCanMoveForwardWhenFacingEast() {
         assertSame(EAST, turtle.getCurrentDirection());
         turtle.move(5, sketch);
-        turtle.move(5, sketch);
 
-        Position pos = new Position(0,10);
+
+        Position pos = new Position(0,4);
 
         assertEquals(pos, turtle.getCurrentPosition());
     }
@@ -142,7 +142,7 @@ public class TurtleTest {
         turtle.turnRight();
         turtle.move(5, sketch);
 
-        Position pos = new Position(5,5);
+        Position pos = new Position(4,4);
 
         assertEquals(pos, turtle.getCurrentPosition());
     }
@@ -155,7 +155,7 @@ public class TurtleTest {
         turtle.turnRight();
         turtle.move(3, sketch);
 
-        Position pos = new Position(5,2);
+        Position pos = new Position(4,2);
 
         assertEquals(pos, turtle.getCurrentPosition());
     }
@@ -185,7 +185,7 @@ public class TurtleTest {
 
         int[][] floor = sketch.getFloor();
 
-        System.out.println(Arrays.deepToString(floor));
+        System.out.println(Arrays.deepToString(floor).replace("],", "]\n"));
 
         for (int i = column; i < column + 5; i++) {
             assertEquals(1, floor[row][i]);
@@ -203,32 +203,54 @@ public class TurtleTest {
 
         int[][] floor = sketch.getFloor();
 
-        System.out.println(Arrays.deepToString(floor));
+        System.out.println(Arrays.deepToString(floor).replace("],", "]\n"));
 
         for (int i = row; i < row + 5; i++) {
             assertEquals(1, floor[i][column]);
         }
     }
 
-//    @Test
-//    public void turtleCanWriteWhileMovingForwardWhenFacingWest() {
-//        turtle.move(5, sketch);
-//
-//        int row = turtle.getCurrentPosition().getRow();
-//        int column = turtle.getCurrentPosition().getColumn();
-//
-//        turtle.penDown();
-//        turtle.turnRight();
-//        turtle.turnRight();
-//        turtle.move(5, sketch);
-//
-//        int[][] floor = sketch.getFloor();
-//
-//        System.out.println(Arrays.deepToString(floor));
-//
-//        for (int i = column; i > column - 5; i--) {
-//            assertEquals(1, floor[row][i]);
-//        }
-//    }
+    @Test
+    public void turtleCanWriteWhileMovingForwardWhenFacingWest() {
+        turtle.move(5, sketch);
+
+        int row = turtle.getCurrentPosition().getRow();
+        int column = turtle.getCurrentPosition().getColumn();
+
+        turtle.penDown();
+        turtle.turnRight();
+        turtle.turnRight();
+        turtle.move(5, sketch);
+
+        int[][] floor = sketch.getFloor();
+
+        System.out.println(Arrays.deepToString(floor).replace("],", "]\n"));
+
+        for (int i = column; i > column - 5; i--) {
+            assertEquals(1, floor[row][i]);
+        }
+    }
+
+    @Test
+    public void turtleCanWriteWhileMovingForwardWhenFacingNorth() {
+        turtle.turnRight();
+        turtle.move(5, sketch);
+
+        int row = turtle.getCurrentPosition().getRow();
+        int column = turtle.getCurrentPosition().getColumn();
+
+        turtle.penDown();
+        turtle.turnRight();
+        turtle.turnRight();
+        turtle.move(5, sketch);
+
+        int[][] floor = sketch.getFloor();
+
+        System.out.println(Arrays.deepToString(floor).replace("],", "]\n"));
+
+        for (int i = row; i > row - 5; i--) {
+            assertEquals(1, floor[i][column]);
+        }
+    }
 
 }

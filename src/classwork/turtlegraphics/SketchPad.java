@@ -14,4 +14,6 @@ public class SketchPad {
     public int[][] getFloor() {
         return floor;
     }
+
+
 }

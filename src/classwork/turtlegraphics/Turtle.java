@@ -6,8 +6,7 @@ public class Turtle {
     private boolean isPenUp = true;
     private Direction currentDirection = EAST;
     private Position currentPosition = new Position(0,0);
-    private int row = currentPosition.getRow();
-    private int column = currentPosition.getColumn();
+
 
     public boolean isPenUp() {
         return isPenUp;
@@ -48,11 +47,14 @@ public class Turtle {
     }
 
     private void move(int numOfSteps) {
+        int row = currentPosition.getRow();
+        int column = currentPosition.getColumn();
+
         switch(currentDirection) {
-            case EAST -> currentPosition.setColumn(column + numOfSteps);
-            case WEST -> currentPosition.setColumn(column - numOfSteps);
-            case SOUTH -> currentPosition.setRow(row + numOfSteps);
-            case NORTH -> currentPosition.setRow(row - numOfSteps);
+            case EAST -> currentPosition.setColumn(column + numOfSteps - 1);
+            case WEST -> currentPosition.setColumn(column - numOfSteps + 1);
+            case SOUTH -> currentPosition.setRow(row + numOfSteps - 1);
+            case NORTH -> currentPosition.setRow(row - numOfSteps + 1);
         }
     }
 
@@ -63,6 +65,8 @@ public class Turtle {
 
     private void write(int numOfSteps, SketchPad sketchPad) {
         int[][] floor = sketchPad.getFloor();
+        int row = currentPosition.getRow();
+        int column = currentPosition.getColumn();
 
         switch(currentDirection) {
             case EAST -> {
@@ -91,7 +95,7 @@ public class Turtle {
             }
             case NORTH -> {
                 if (!isPenUp()) {
-                    for (int i = row; i < row - numOfSteps; i--) {
+                    for (int i = row; i > row - numOfSteps; i--) {
                         floor[i][column] = 1;
                         sketchPad.setFloor(floor);
                     }
