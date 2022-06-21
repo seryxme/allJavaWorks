@@ -19,9 +19,14 @@ public class SevenSegment {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public void resetDisplay() {
+        for (int i = 0; i < 8; i++) {
+            converter[i] = 0;
+        }
+
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
                 display[i][j] = " ";
@@ -152,6 +157,56 @@ public class SevenSegment {
                 converter[3] = 1;
                 converter[4] = 1;
                 converter[5] = 1;
+            }
+        }
+    }
+
+    public void inputConverter(char character) {
+//        if (number > 9 || number < 0) {
+//            throw new IllegalArgumentException("Cannot display multiple digits or negative numbers.");
+//        }
+        switch (character) {
+            case 'a' -> {
+                converter[0] = 1;
+                converter[1] = 1;
+                converter[2] = 1;
+                converter[3] = 0;
+                converter[4] = 1;
+                converter[5] = 1;
+                converter[6] = 1;
+            }
+            case 'b' -> {
+                converter[2] = 1;
+                converter[3] = 1;
+                converter[4] = 1;
+                converter[5] = 1;
+                converter[6] = 1;
+            }
+            case 'c' -> {
+                converter[3] = 1;
+                converter[4] = 1;
+                converter[6] = 1;
+            }
+            case 'd' -> {
+                converter[1] = 1;
+                converter[2] = 1;
+                converter[3] = 1;
+                converter[4] = 1;
+                converter[6] = 1;
+            }
+            case 'e' -> {
+                converter[0] = 1;
+                converter[1] = 1;
+                converter[3] = 1;
+                converter[4] = 1;
+                converter[5] = 1;
+                converter[6] = 1;
+            }
+            case 'f' -> {
+                converter[0] = 1;
+                converter[4] = 1;
+                converter[5] = 1;
+                converter[6] = 1;
             }
         }
     }

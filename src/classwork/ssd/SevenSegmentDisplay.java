@@ -8,12 +8,18 @@ public class SevenSegmentDisplay {
 
     public static void main(String[] args) {
 
-        System.out.println("Enter a number to display: ");
-        int number = digitReader.nextInt();
+//        System.out.println("Enter a number to display: ");
+//        int number = digitReader.nextInt();
 
-        //for (int i = 0; i < 10; i++) {
-            displayNumber(number);
-        //}
+        for (int i = 0; i < 10; i++) {
+            displayNumber(i);
+        }
+
+        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f'};
+
+        for(char character:charArray) {
+            displayCharacter(character);
+        }
 
     }
 
@@ -21,6 +27,16 @@ public class SevenSegmentDisplay {
         newDisplay.resetDisplay();
 
         newDisplay.inputConverter(number);
+
+        newDisplay.segmentReader();
+
+        newDisplay.showDisplay();
+    }
+
+    public static void displayCharacter(char character) {
+        newDisplay.resetDisplay();
+
+        newDisplay.inputConverter(character);
 
         newDisplay.segmentReader();
 
