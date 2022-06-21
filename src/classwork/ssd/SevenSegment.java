@@ -75,14 +75,14 @@ public class SevenSegment {
         }
     }
 
-    public void setOffSections() {
-        display[0][0] = " ";
-        display[0][4] = " ";
-        display[4][0] = " ";
-        display[4][4] = " ";
-        display[8][0] = " ";
-        display[8][4] = " ";
-    }
+//    public void setOffSections() {
+//        display[0][0] = " ";
+//        display[0][4] = " ";
+//        display[4][0] = " ";
+//        display[4][4] = " ";
+//        display[8][0] = " ";
+//        display[8][4] = " ";
+//    }
 
     public void inputConverter(int number) {
         if (number > 9 || number < 0) {

@@ -3,8 +3,8 @@ package classwork.ssd;
 import java.util.Scanner;
 
 public class SevenSegmentDisplay {
-    private static SevenSegment newDisplay = new SevenSegment();
-    private static Scanner digitReader = new Scanner(System.in);
+    private static final SevenSegment newDisplay = new SevenSegment();
+    private static final Scanner digitReader = new Scanner(System.in);
 
     public static void main(String[] args) {
 
