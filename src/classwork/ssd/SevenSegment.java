@@ -3,8 +3,8 @@ package classwork.ssd;
 import static classwork.ssd.DisplaySegments.*;
 
 public class SevenSegment {
-    private String[][] display;
-    private int[] converter;
+    private final String[][] display;
+    private final int[] converter;
 
     public SevenSegment() {
         display = new String[9][5];
@@ -79,6 +79,7 @@ public class SevenSegment {
         if (number > 9 || number < 0) {
             throw new IllegalArgumentException("Cannot display multiple digits or negative numbers.");
         }
+        converter[7] = 1;
         switch (number) {
             case 1 -> {
                 converter[1] = 1;
@@ -154,6 +155,8 @@ public class SevenSegment {
 
     public void inputConverter(char character) throws IllegalArgumentException {
 
+        converter[7] = 1;
+
         switch (character) {
             case 'a' -> {
                 converter[0] = 1;
@@ -201,16 +204,19 @@ public class SevenSegment {
     }
 
     public void segmentReader() {
-        for (int index = 0; index < 7; index++) {
-            if (converter[index] == 1) {
-                switch(index) {
-                    case 0 -> setSegmentOn(TOP);
-                    case 1 -> setSegmentOn(RIGHT1);
-                    case 2 -> setSegmentOn(RIGHT2);
-                    case 3 -> setSegmentOn(BOTTOM);
-                    case 4 -> setSegmentOn(LEFT2);
-                    case 5 -> setSegmentOn(LEFT1);
-                    case 6 -> setSegmentOn(MIDDLE);
+        if (converter[7] == 0) resetDisplay();
+        else {
+            for (int index = 0; index < 7; index++) {
+                if (converter[index] == 1) {
+                    switch (index) {
+                        case 0 -> setSegmentOn(TOP);
+                        case 1 -> setSegmentOn(RIGHT1);
+                        case 2 -> setSegmentOn(RIGHT2);
+                        case 3 -> setSegmentOn(BOTTOM);
+                        case 4 -> setSegmentOn(LEFT2);
+                        case 5 -> setSegmentOn(LEFT1);
+                        case 6 -> setSegmentOn(MIDDLE);
+                    }
                 }
             }
         }
