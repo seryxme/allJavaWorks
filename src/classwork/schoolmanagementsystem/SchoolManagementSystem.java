@@ -318,12 +318,12 @@ public class SchoolManagementSystem {
                     int courseNum = entry.nextInt();
 
                     System.out.println(newSchool.getCourse(courseNum - 1));
-                    if (newSchool.getCourse(courseNum - 1).totalStudentsOfferingCourse() != 0) {
+                    if (newSchool.totalStudentsOfferingCourse(courseNum - 1) != 0) {
                         System.out.println("Students offering this course:");
-                        for (int i = 0; i < newSchool.getCourse(courseNum - 1).totalStudentsOfferingCourse(); i++) {
+                        for (int i = 0; i < newSchool.totalStudentsOfferingCourse(courseNum - 1); i++) {
                             System.out.print((i + 1) + ".\t");
-                            System.out.print(newSchool.getCourse(courseNum - 1).getStudent(i).getStudentName());
-                            System.out.printf("\tID: %03d%n", newSchool.getCourse(courseNum - 1).getStudent(i).getStudentId());
+                            System.out.print(newSchool.nameOfStudentOfferingCourse(courseNum - 1, i));
+                            System.out.printf("\tID: %03d%n", newSchool.idOfStudentOfferingCourse(courseNum - 1, i));
                         }
                     }
 

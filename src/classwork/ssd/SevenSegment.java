@@ -16,6 +16,11 @@ public class SevenSegment {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
                 System.out.printf("%s ", display[i][j]);
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e){
+                    System.out.println("Interrupted.");
+                }
             }
             System.out.println();
         }

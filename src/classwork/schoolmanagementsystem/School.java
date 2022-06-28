@@ -135,4 +135,16 @@ public class School {
     public void updateCourseList(ArrayList<Course> courseList) {
         newCourses = courseList;
     }
+
+    public int totalStudentsOfferingCourse(int index) {
+        return newCourses.get(index).totalStudentsOfferingCourse();
+    }
+
+    public String nameOfStudentOfferingCourse(int courseIndex, int studentIndex) {
+        return newCourses.get(courseIndex).getStudent(studentIndex).getStudentName();
+    }
+
+    public int idOfStudentOfferingCourse(int courseIndex, int studentIndex) {
+        return newCourses.get(courseIndex).getStudent(studentIndex).getStudentId();
+    }
 }
