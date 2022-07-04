@@ -1,4 +1,4 @@
-package classwork.Lists;
+package classwork.dataStructuresAndAlgorithms;
 
 public interface List {
    

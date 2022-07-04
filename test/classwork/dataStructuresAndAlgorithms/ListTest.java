@@ -1,4 +1,4 @@
-package classwork.Lists;
+package classwork.dataStructuresAndAlgorithms;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
