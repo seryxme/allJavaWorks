@@ -11,4 +11,8 @@ public interface Set {
     int size();
 
     boolean contains(String name);
+
+    int capacity();
+
+    String get(int index);
 }

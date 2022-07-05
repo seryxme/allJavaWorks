@@ -3,24 +3,22 @@ package classwork.dataStructuresAndAlgorithms;
 import java.util.Objects;
 
 public class NewSet implements Set {
-    private boolean isEmpty = true;
     private boolean isInList;
     private ArrayList elements = new ArrayList();
 
     @Override
     public boolean isEmpty() {
-        if (elements.size() != 0) isEmpty = false;
-        return isEmpty;
+        return elements.isEmpty();
     }
 
     @Override
-    public void add(String food) {
-        if (!contains(food)) elements.add(food);
+    public void add(String element) {
+        if (!contains(element)) elements.add(element);
     }
 
     @Override
-    public void remove(String food) {
-        elements.remove(food);
+    public void remove(String element) {
+        elements.remove(element);
     }
 
     @Override
@@ -29,13 +27,23 @@ public class NewSet implements Set {
     }
 
     @Override
-    public boolean contains(String food) {
+    public boolean contains(String element) {
         for (int i = 0; i < elements.size(); i++) {
-            if (Objects.equals(elements.get(i), food)) {
+            if (Objects.equals(elements.get(i), element)) {
                 isInList = true;
                 break;
             } else isInList = false;
         }
         return isInList;
+    }
+
+    @Override
+    public int capacity() {
+        return elements.capacity();
+    }
+
+    @Override
+    public String get(int index) {
+        return elements.get(index);
     }
 }

@@ -74,4 +74,30 @@ public class SetTest {
         food.add("Eba");
         assertEquals(3, food.size());
     }
+
+    @Test
+    public void addSixElements_capacityShouldDoubleTest() {
+        assertEquals(5, food.capacity());
+        food.add("Eba");
+        food.add("Fufu");
+        food.add("Beans");
+        food.add("Rice");
+        food.add("Garri");
+        food.add("Yam");
+
+        assertEquals(10, food.capacity());
+    }
+
+    @Test
+    public void retrieveElementInsideTheSet() {
+        assertEquals(5, food.capacity());
+        food.add("Eba");
+        food.add("Fufu");
+        food.add("Beans");
+        food.add("Rice");
+        food.add("Garri");
+        food.add("Yam");
+
+        assertEquals("Garri", food.get(4));
+    }
 }
