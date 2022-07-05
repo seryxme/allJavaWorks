@@ -14,13 +14,22 @@ public class ArrayList implements List{
 
     @Override
     public void add(String myName) {
+        expandArray();
+        elements[size] = myName;
+        size++;
+    }
+    public void add(int index, String myName) {
+        expandArray();
+        elements[index] = myName;
+        size++;
+    }
+
+    private void expandArray() {
         if (size == elements.length) {
             String[] newElements = new String[elements.length * 2];
             System.arraycopy(elements, 0, newElements, 0, elements.length);
             elements = newElements;
         }
-        elements[size] = myName;
-        size++;
     }
 
     @Override
@@ -30,7 +39,14 @@ public class ArrayList implements List{
                 if (size - i >= 0) System.arraycopy(elements, i + 1, elements, i, size - i);
             }
         }
-        size--;
+        if (size != 0) size--;
+    }
+
+    public void remove(int index) {
+        for(int i = index; i < elements.length; i++) {
+            if (size - i >= 0) System.arraycopy(elements, i + 1, elements, i, size - i);
+        }
+        if (size != 0) size--;
     }
 
     @Override

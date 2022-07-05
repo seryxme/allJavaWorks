@@ -78,4 +78,34 @@ public class MapTest {
         assertFalse(academy.containsValue("JavaScript"));
     }
 
+    @Test
+    void createKeySetFromMap() {
+        academy.put("Chibob", "Java");
+        academy.put("Anjola", "Python");
+        academy.put("Grace", "Java");
+        academy.put("Mofe", "Kotlin");
+
+        assertTrue(academy.keySet().contains("Grace"));
+    }
+
+    @Test
+    void createValueListFromMap() {
+        academy.put("Chibob", "Java");
+        academy.put("Anjola", "Python");
+        academy.put("Grace", "Java");
+        academy.put("Mofe", "Kotlin");
+
+        assertEquals("Kotlin", academy.values().get(3));
+    }
+
+    @Test
+    void createEntrySetFromMap() {
+        academy.put("Chibob", "Java");
+        academy.put("Anjola", "Python");
+        academy.put("Grace", "Java");
+        academy.put("Mofe", "Kotlin");
+
+        assertTrue(academy.entrySet().contains("Anjola=Python"));
+    }
+
 }

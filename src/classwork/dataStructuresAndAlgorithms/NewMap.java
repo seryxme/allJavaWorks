@@ -58,5 +58,32 @@ public class NewMap implements Map {
         return isInList;
     }
 
+    @Override
+    public NewSet entrySet() {
+        NewSet mySet = new NewSet();
+        for (int i = 0; i < keys.size(); i++) {
+            mySet.add(keys.get(i)+"="+values.get(i));
+            }
+        return mySet;
+    }
+
+    @Override
+    public Set keySet() {
+        NewSet keySet = new NewSet();
+        for (int i = 0; i < keys.size(); i++) {
+            keySet.add(keys.get(i));
+        }
+        return keySet;
+    }
+
+    @Override
+    public ArrayList values() {
+        ArrayList valuesArray = new ArrayList();
+        for (int i = 0; i < values.size(); i++) {
+            valuesArray.add(values.get(i));
+        }
+        return valuesArray;
+    }
+
 
 }

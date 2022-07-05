@@ -16,5 +16,11 @@ public interface Map {
     boolean containsKey(String key);
 
     boolean containsValue(String value);
+
+    Set entrySet();
+
+    Set keySet();
+
+    ArrayList values();
 }
 

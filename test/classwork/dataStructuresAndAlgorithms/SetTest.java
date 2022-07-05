@@ -14,7 +14,7 @@ public class SetTest {
     }
 
     @Test
-    void setIsNotEmpty() {
+    void setIsEmpty() {
         assertTrue(food.isEmpty());
     }
 
