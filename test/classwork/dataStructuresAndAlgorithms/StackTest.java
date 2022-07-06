@@ -27,7 +27,7 @@ public class StackTest {
     @Test
     void stackCanBeDeletedFrom() {
         books.push("Physics");
-        books.pop("Physics");
+        books.pop();
         assertTrue(books.empty());
     }
 
@@ -44,7 +44,7 @@ public class StackTest {
         books.push("Physics");
         books.push("Chemistry");
         books.push("Maths");
-        assertTrue(books.search("Chemistry"));
+        assertEquals(1, books.search("Chemistry"));
     }
 
     @Test
@@ -53,11 +53,10 @@ public class StackTest {
         books.push("Chemistry");
         books.push("Maths");
 
-        books.pop("Physics");
-        assertEquals(3, books.size());
-
-        books.pop("Maths");
+        books.pop();
         assertEquals(2, books.size());
+
+        assertEquals("Chemistry", books.peek());
     }
 
     @Test
@@ -68,6 +67,5 @@ public class StackTest {
 
         assertEquals("Maths", books.peek());
     }
-
 
 }

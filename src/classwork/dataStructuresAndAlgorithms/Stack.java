@@ -1,5 +1,6 @@
 package classwork.dataStructuresAndAlgorithms;
 
+import java.util.EmptyStackException;
 import java.util.Objects;
 
 public class Stack {
@@ -15,23 +16,25 @@ public class Stack {
         stack.add(element);
     }
 
-    public void pop(String element) {
-        if (Objects.equals(peek(), element)) stack.remove(element);
+    public void pop() {
+        if (empty()) throw new EmptyStackException();
+        else stack.remove(size() - 1);
     }
 
     public int size() {
         return stack.size();
     }
 
-    public boolean search(String element) {
+    public int search(String element) {
         boolean isInStack = false;
-        for (int i = 0; i < stack.size(); i++) {
+        int i = size();
+        for (; i > 0; i--) {
             if (Objects.equals(stack.get(i), element)) {
                 isInStack = true;
                 break;
             }
         }
-        return isInStack;
+        return i;
     }
 
     public String peek() {
