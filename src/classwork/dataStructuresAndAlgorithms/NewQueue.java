@@ -1,5 +1,6 @@
 package classwork.dataStructuresAndAlgorithms;
 
+import javax.naming.LimitExceededException;
 import java.util.Objects;
 
 public class NewQueue implements Queue {
@@ -12,8 +13,12 @@ public class NewQueue implements Queue {
     }
 
     @Override
-    public void add(String item) {
-        queue.add(item);
+    public void add(String item) throws LimitExceededException {
+        int lim = 10;
+        if (size() != lim) {
+            queue.add(item);
+        }
+        else throw new LimitExceededException();
     }
 
     @Override

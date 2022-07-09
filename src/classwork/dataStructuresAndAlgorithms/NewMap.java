@@ -15,8 +15,18 @@ public class NewMap implements Map {
 
     @Override
     public void put(String key, String value) {
-        keys.add(key);
-        values.add(value);
+        if(!containsKey(key)) {
+            keys.add(key);
+            values.add(value);
+        }
+        else {
+            for (int i = 0; i < keys.size(); i++) {
+                if (Objects.equals(keys.get(i), key)) {
+                    values.add(i, value);
+                    break;
+                }
+            }
+        }
     }
 
     @Override
@@ -26,7 +36,15 @@ public class NewMap implements Map {
 
     @Override
     public void remove(String key) {
-        keys.remove(key);
+        if(containsKey(key)) {
+            for (int i = 0; i < keys.size(); i++) {
+                if (Objects.equals(keys.get(i), key)) {
+                    keys.remove(key);
+                    values.remove(i);
+                    break;
+                }
+            }
+        }
     }
 
     @Override

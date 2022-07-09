@@ -4,8 +4,9 @@ import java.util.EmptyStackException;
 import java.util.Objects;
 
 public class Stack {
+    private int lim = 10;
 
-    ArrayList stack = new ArrayList();
+    private ArrayList stack = new ArrayList();
 
     public boolean empty() {
         return stack.isEmpty();
@@ -13,7 +14,10 @@ public class Stack {
 
 
     public void push(String element) {
-        stack.add(element);
+        if (size() != lim) {
+            stack.add(element);
+        }
+        else throw new StackOverflowError();
     }
 
     public void pop() {

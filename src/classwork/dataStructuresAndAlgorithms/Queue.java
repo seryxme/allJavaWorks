@@ -1,9 +1,11 @@
 package classwork.dataStructuresAndAlgorithms;
 
+import javax.naming.LimitExceededException;
+
 public interface Queue {
     boolean isEmpty();
 
-    void add(String item);
+    void add(String item) throws LimitExceededException;
 
     void remove(String item);
 

@@ -3,6 +3,8 @@ package classwork.dataStructuresAndAlgorithms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.naming.LimitExceededException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,20 +22,20 @@ public class QueueTest {
     }
 
     @Test
-    void queueCanBeAddedTo() {
+    void queueCanBeAddedTo() throws LimitExceededException {
         line.add("Student1");
         assertFalse(line.isEmpty());
     }
 
     @Test
-    void queueCanBeDeletedFrom() {
+    void queueCanBeDeletedFrom() throws LimitExceededException {
         line.add("Student1");
         line.remove("Student1");
         assertTrue(line.isEmpty());
     }
 
     @Test
-    void queueCanHaveMoreThanOneElement() {
+    void queueCanHaveMoreThanOneElement() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -41,7 +43,7 @@ public class QueueTest {
     }
 
     @Test
-    void queueSizeChangesIfElementIsDeletedAfterAdding() {
+    void queueSizeChangesIfElementIsDeletedAfterAdding() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -50,7 +52,7 @@ public class QueueTest {
     }
 
     @Test
-    void verifyThatQueueContainsAnItem() {
+    void verifyThatQueueContainsAnItem() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -58,7 +60,7 @@ public class QueueTest {
     }
 
     @Test
-    void verifyThatQueueDoesNotContainAnItem() {
+    void verifyThatQueueDoesNotContainAnItem() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -66,7 +68,7 @@ public class QueueTest {
     }
 
     @Test
-    public void retrieveItemInsideTheQueue() {
+    public void retrieveItemInsideTheQueue() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -78,7 +80,7 @@ public class QueueTest {
     }
 
     @Test
-    void peekWithoutRemoving() {
+    void peekWithoutRemoving() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -87,7 +89,7 @@ public class QueueTest {
     }
 
     @Test
-    void pollToRetrieveAndRemoveItemFromQueue() {
+    void pollToRetrieveAndRemoveItemFromQueue() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
@@ -100,7 +102,7 @@ public class QueueTest {
     }
 
     @Test
-    public void clearItemsInsideTheQueue_queueShouldBeEmpty() {
+    public void clearItemsInsideTheQueue_queueShouldBeEmpty() throws LimitExceededException {
         line.add("Student1");
         line.add("Student2");
         line.add("Student3");
