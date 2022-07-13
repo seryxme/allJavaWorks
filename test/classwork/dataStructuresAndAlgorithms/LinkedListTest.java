@@ -89,6 +89,8 @@ public class LinkedListTest {
         courses.add("Data Science");
         courses.add("Industrial Design");
 
+        System.out.println(courses);
+
         assertEquals("NodeJS", courses.get(5).getContent());
     }
 

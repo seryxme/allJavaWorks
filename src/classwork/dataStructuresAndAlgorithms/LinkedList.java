@@ -74,4 +74,19 @@ public class LinkedList {
         }
         return retrievedNode;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < size; i++) {
+            builder.append(get(i).getContent());
+            if (i < size - 1) {
+                builder.append(", ");
+            }
+        }
+
+        return String.valueOf(builder);
+    }
 }
