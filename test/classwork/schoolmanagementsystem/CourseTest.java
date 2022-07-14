@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CourseTest {
-    Course course;
+    Contact course;
     Student student;
     Student tunde;
     Student david;
@@ -15,7 +15,7 @@ public class CourseTest {
     Student samuel;
     @BeforeEach
     public void SetUp(){
-        course = new Course(1, "Java", "JAV101", 3);
+        course = new Contact(1, "Java", "JAV101", 3);
         student = new Student("student", 200, 19, "Female");
         tunde = new Student("tunde", 210, 29, "Male");
         david = new Student("dave", 212, 23, "Male");

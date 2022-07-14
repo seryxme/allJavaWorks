@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PhonebookTest {
+    PhonebookUser user1;
     Phonebook phonebook;
     Contact contact1;
     Contact contact2;
@@ -13,6 +14,7 @@ public class PhonebookTest {
 
     @BeforeEach
     void setUp() {
+        user1 = new PhonebookUser("seryx", "twitty2");
         phonebook = new Phonebook();
         contact1 = new Contact("Tunde", "Tunampa", "08123456789");
         contact2 = new Contact("Yinka", "Ade", "09123498765");

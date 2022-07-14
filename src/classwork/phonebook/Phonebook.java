@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Phonebook {
-    private ArrayList<Contact> contacts;
+    private final ArrayList<Contact> contacts;
 
     public Phonebook() {
-        contacts = new ArrayList<Contact>();
+        contacts = new ArrayList<>();
     }
 
 
