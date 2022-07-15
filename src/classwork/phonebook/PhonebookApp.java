@@ -367,8 +367,7 @@ public class PhonebookApp {
             }
 
             System.out.println("Press enter to go back to the menu.");
-            dataReader.nextLine();
-        } catch(ContactNotFoundException ex) {
+            dataReader.nextLine();  } catch(ContactNotFoundException ex) {
             System.out.println("No contact found for your query search.");
         }
 

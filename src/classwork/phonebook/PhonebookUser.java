@@ -57,12 +57,16 @@ public class PhonebookUser {
         ArrayList<Contact> foundContacts = new ArrayList<>();
 
         for(Contact contact: phonebook.getPhonebook()) {
+            StringBuilder firstNameCharacters = new StringBuilder();
+            StringBuilder lastNameCharacters = new StringBuilder();
             for (int i = 0; i < charLength; i++) {
-                if(contact.getFirstName().toLowerCase().charAt(i) == characters.toLowerCase().charAt(i) ||
-                        contact.getLastName().toLowerCase().charAt(i) == characters.toLowerCase().charAt(i)) {
-                    if(!foundContacts.contains(contact)) {
-                        foundContacts.add(contact);
-                    }
+                firstNameCharacters.append(contact.getFirstName().charAt(i));
+                lastNameCharacters.append(contact.getLastName().charAt(i));
+            }
+            if(firstNameCharacters.toString().equalsIgnoreCase(characters) ||
+                    lastNameCharacters.toString().equalsIgnoreCase(characters)) {
+                if(!foundContacts.contains(contact)) {
+                    foundContacts.add(contact);
                 }
             }
         }
@@ -70,5 +74,9 @@ public class PhonebookUser {
         if (foundContacts.isEmpty()) throw new ContactNotFoundException();
 
         return foundContacts;
+    }
+
+    public boolean search(String detail) {
+        return phonebook.search(detail);
     }
 }
