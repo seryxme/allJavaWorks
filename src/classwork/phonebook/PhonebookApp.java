@@ -120,7 +120,9 @@ public class PhonebookApp {
                     1. Add Contact
                     2. Check Contact
                     3. Delete Contact
-                    4. Edit Contact
+                    4. Edit ContactSystem.out.println("\\nEnter the contact's first name, last name or phone number:");
+                                                       String detail = dataReader.nextLine();
+                                                       editContact(user, detail);
                     5. Search Directory
                     6. Show All Contacts
                     0. Logout
@@ -133,9 +135,7 @@ public class PhonebookApp {
                 case 2 -> displayContact(user);
                 case 3 -> deleteContact(user);
                 case 4 -> {
-                    System.out.println("\nEnter the contact's first name, last name or phone number:");
-                    String detail = dataReader.nextLine();
-                    editContact(user, detail);
+
                 }
                 case 5 -> searchDirectory(user);
                 case 6 -> displayAllContacts(user);

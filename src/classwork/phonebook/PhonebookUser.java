@@ -23,6 +23,7 @@ public class PhonebookUser {
     }
 
     public boolean checkPassword(String password) {
+
         return Objects.equals(this.password, password);
     }
 
