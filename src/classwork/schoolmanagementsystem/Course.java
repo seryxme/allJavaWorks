@@ -2,7 +2,7 @@ package classwork.schoolmanagementsystem;
 
 import java.util.ArrayList;
 
-public class Contact {
+public class Course {
     private int courseId;
     private String courseTitle;
     private String  courseCode;
@@ -13,7 +13,7 @@ public class Contact {
     public enum CourseType {COMPULSORY, ELECTIVE};
     private CourseType newCourseType;
 
-    public Contact(int courseId, String courseTitle, String courseCode, int courseUnit) {
+    public Course(int courseId, String courseTitle, String courseCode, int courseUnit) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.courseCode = courseCode;

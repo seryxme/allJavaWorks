@@ -120,9 +120,7 @@ public class PhonebookApp {
                     1. Add Contact
                     2. Check Contact
                     3. Delete Contact
-                    4. Edit ContactSystem.out.println("\\nEnter the contact's first name, last name or phone number:");
-                                                       String detail = dataReader.nextLine();
-                                                       editContact(user, detail);
+                    4. Edit Contact
                     5. Search Directory
                     6. Show All Contacts
                     0. Logout
