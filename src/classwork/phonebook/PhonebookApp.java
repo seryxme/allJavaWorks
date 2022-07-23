@@ -136,7 +136,9 @@ public class PhonebookApp {
                 case 2 -> displayContact(user);
                 case 3 -> deleteContact(user);
                 case 4 -> {
-
+                    System.out.println("Enter the first name, last name or phone number of the contact you want to edit: ");
+                    String detail = dataReader.nextLine();
+                    editContact(user, detail);
                 }
                 case 5 -> searchDirectory(user);
                 case 6 -> displayAllContacts(user);
