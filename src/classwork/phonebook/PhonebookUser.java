@@ -36,9 +36,7 @@ public class PhonebookUser {
     }
 
     public void importContactList(ArrayList<Contact> contactList) {
-        for (Contact contact:contactList) {
-            phonebook.addContact(contact);
-        }
+        phonebook.getPhonebook().addAll(contactList);
     }
 
     public Contact getContact(String info) {
@@ -49,7 +47,7 @@ public class PhonebookUser {
         phonebook.removeContact(contact);
     }
 
-    public Contact[] getAllContact() {
+    public ArrayList<Contact> getAllContact() {
         return  phonebook.getPhonebook();
     }
 

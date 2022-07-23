@@ -121,8 +121,9 @@ public class PhonebookTest {
         user1.addContact(contact3);
 
         Contact[] contactsList = {contact1, contact2, contact3};
+        Contact[] contactsList2 = user1.getAllContact().toArray(new Contact[0]);
 
-        assertArrayEquals(contactsList, user1.getPhonebook().getPhonebook());
+        assertArrayEquals(contactsList, contactsList2);
     }
 
     @Test

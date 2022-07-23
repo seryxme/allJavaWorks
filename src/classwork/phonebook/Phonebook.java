@@ -1,6 +1,7 @@
 package classwork.phonebook;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Phonebook {
@@ -9,8 +10,6 @@ public class Phonebook {
     public Phonebook() {
         contacts = new ArrayList<>();
     }
-
-
 
     public Contact getContact(int index) {
         return contacts.get(index);
@@ -27,13 +26,8 @@ public class Phonebook {
         return null;
     }
 
-    public Contact[] getPhonebook() {
-        Contact[] contactArray = new Contact[size()];
-
-        for (int i = 0; i < size(); i++) {
-            contactArray[i] = getContact(i);
-        }
-        return contactArray;
+    public ArrayList<Contact> getPhonebook() {
+        return contacts;
     }
 
     public void addContact(Contact contact) {
@@ -53,35 +47,14 @@ public class Phonebook {
     }
 
     public String getContactNumber(String name) {
-        return getContactInfo(name);
-    }
-
-    private String getContactInfo(String info) {
-        String detail = null;
-        for(Contact contact: contacts) {
-            if (contact.getFirstName().equalsIgnoreCase(info) ||
-                    (contact.getLastName().equalsIgnoreCase(info))) {
-                detail = contact.getPhoneNumber();
-            }
-            else if (contact.getPhoneNumber().equalsIgnoreCase(info)) {
-                detail = String.format("%s %s", contact.getFirstName(), contact.getLastName());
-            }
-        }
-        return detail;
+        return getContact(name).getPhoneNumber();
     }
 
     public String getContactName(String number) {
-        return getContactInfo(number);
+        return String.format("%s %s", getContact(number).getFirstName(), getContact(number).getLastName());
     }
 
     public boolean search(String info) {
-        for(Contact contact: contacts) {
-            if (Objects.equals(contact.getFirstName(), info) ||
-                    (Objects.equals(contact.getLastName(), info))||
-                    (Objects.equals(contact.getPhoneNumber(), info))) {
-                return true;
-            }
-        }
-        return false;
+        return getContact(info) != null;
     }
 }

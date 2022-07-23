@@ -12,15 +12,18 @@ public class PhonebookApp {
     private  static int tries = 1;
 
     public static void main(String[] args) {
+        dataLoader();
+        appMain();
+
+    }
+
+    private static void dataLoader() {
         dummyData.addDummies();
 
         userData = dummyData.getDummyUsers();
         for (int i = 0; i < userData.size(); i++) {
             userData.get(i).importContactList(dummyData.allUserContacts.get(i));
         }
-
-        appMain();
-
     }
 
     private static void appMain() {
