@@ -1,8 +1,6 @@
 package classwork.phonebook;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class Phonebook {
     private final ArrayList<Contact> contacts;

@@ -126,6 +126,7 @@ public class PhonebookApp {
                     4. Edit Contact
                     5. Search Directory
                     6. Show All Contacts
+                    7. Change Your Password
                     0. Logout
                     """, user.getUserName());
             int option = dataReader.nextInt();
@@ -142,6 +143,7 @@ public class PhonebookApp {
                 }
                 case 5 -> searchDirectory(user);
                 case 6 -> displayAllContacts(user);
+                case 7 -> changePassword(user);
                 case 0 -> appMain();
                 default -> {
                     System.out.println("Invalid selection. Please, try again.");
@@ -152,6 +154,15 @@ public class PhonebookApp {
             System.out.println("Use only numbers from the options, please.");
             appMenu(user);
         }
+    }
+
+    private static void changePassword(PhonebookUser user) {
+        System.out.println("Enter new password: ");
+        String newPassword = dataReader.nextLine();
+        user.setPassword(newPassword);
+
+        System.out.println("Password changed successfully!");
+        appMenu(user);
     }
 
     private static void addContact(PhonebookUser user) {
