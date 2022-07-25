@@ -372,16 +372,11 @@ public class PhonebookApp {
             System.out.println("Enter your search query: ");
             String query = dataReader.nextLine();
 
-            System.out.println("==============================");
-            System.out.printf("**** CONTACTS FOR '%s' ****%n", query.toUpperCase());
-            System.out.println("------------------------------");
-            for (Contact contact : user.searchContacts(query)) {
-                System.out.println(contact);
-                System.out.println("------------------------------");
-            }
+            user.searchContacts(query);
 
             System.out.println("Press enter to go back to the menu.");
-            dataReader.nextLine();  } catch(ContactNotFoundException ex) {
+            dataReader.nextLine();
+        } catch(ContactNotFoundException ex) {
             System.out.println("No contact found for your query search.");
         }
 
@@ -389,19 +384,12 @@ public class PhonebookApp {
     }
 
     private static void displayAllContacts(PhonebookUser user) {
-        System.out.println("==============================");
-        System.out.println("*******  ALL CONTACTS  *******");
-        System.out.println("------------------------------");
-            for (Contact contact: user.getAllContact()) {
-                System.out.println(contact);
-                System.out.println("------------------------------");
-            }
+        user.printAllContacts();
 
-            System.out.println("Press enter to go back to the menu.");
-            dataReader.nextLine();
+        System.out.println("Press enter to go back to the menu.");
+        dataReader.nextLine();
 
-            appMenu(user);
-
+        appMenu(user);
     }
 
 

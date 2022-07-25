@@ -47,11 +47,17 @@ public class PhonebookUser {
         phonebook.removeContact(contact);
     }
 
-    public ArrayList<Contact> getAllContact() {
-        return  phonebook.getPhonebook();
+    public void printAllContacts() {
+        System.out.println("==============================");
+        System.out.println("*******  ALL CONTACTS  *******");
+        System.out.println("------------------------------");
+        for (Contact contact: phonebook.getPhonebook()) {
+            System.out.println(contact);
+            System.out.println("------------------------------");
+        }
     }
 
-    public ArrayList<Contact> searchContacts(String characters) {
+    public void searchContacts(String characters) {
         int charLength = characters.length();
         ArrayList<Contact> foundContacts = new ArrayList<>();
 
@@ -72,7 +78,16 @@ public class PhonebookUser {
 
         if (foundContacts.isEmpty()) throw new ContactNotFoundException();
 
-        return foundContacts;
+        System.out.println("==============================");
+        System.out.printf("**** CONTACTS FOR '%s' ****%n", characters.toUpperCase());
+        System.out.println("------------------------------");
+        for (Contact contact : foundContacts) {
+            System.out.println(contact);
+            System.out.println("------------------------------");
+        }
+
+
+
     }
 
     public boolean search(String detail) {
