@@ -1,4 +1,4 @@
-package chapter9;
+package chapter9.bankApp;
 
 public class Customer {
     private int customerId;

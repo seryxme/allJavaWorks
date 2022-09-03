@@ -1,5 +1,8 @@
-package chapter9;
+package chapter9.bankApp;
 
+import chapter9.bankApp.Account;
+import chapter9.bankApp.Bank;
+import chapter9.bankApp.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

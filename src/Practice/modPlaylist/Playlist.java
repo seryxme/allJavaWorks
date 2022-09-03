@@ -1,4 +1,4 @@
-package Practice.playlist;
+package Practice.modPlaylist;
 
 import java.util.*;
 
