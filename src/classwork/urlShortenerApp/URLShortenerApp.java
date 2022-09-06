@@ -41,7 +41,6 @@ public class URLShortenerApp {
         }
     }
 
-
     private static void shortenURL() {
         System.out.println("Please enter your link below: ");
         String longURL = input.nextLine();
@@ -59,9 +58,7 @@ public class URLShortenerApp {
     private static void recoverURL() {
         System.out.println("Please enter your short link below: ");
         String shortURL = input.nextLine();
-        String[] compArray = shortURL.split("/");
-
-        System.out.printf("%nHere's your web link: %s%n", converter.getURL(converter.getKey(compArray[compArray.length - 1])));
+        System.out.printf("%nHere's your web link: %s%n", converter.getURL(converter.getKey(shortURL)));
 
         appMain();
     }

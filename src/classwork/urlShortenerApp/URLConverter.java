@@ -27,10 +27,11 @@ public class URLConverter {
         return KeyConverter.convertRequestKey(requestKey);
     }
 
-    public Integer getKey(String convertedKey) {
+    public Integer getKey(String shortURL) {
+        String[] compArray = shortURL.split("/");
+        String convertedKey = compArray[compArray.length - 1];
         return KeyConverter.getRequestKey(convertedKey);
     }
-
 
     public boolean isValidURL(String url) {
         return url.matches("^https?:\\/\\/(?:www.)?[-a-zA-Z\\d@:%._\\+~#=]{1,256}" +
