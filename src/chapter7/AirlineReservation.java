@@ -34,6 +34,10 @@ public class AirlineReservation {
 
         if (sectionChoice == 1) selectFirstClassSeat();
         else if (sectionChoice == 2) selectEconomySeat();
+        else {
+            System.out.println("invalid input, Default to Economy");
+            selectEconomySeat();
+        }
     }
 
     public static boolean checkFirstClass() {

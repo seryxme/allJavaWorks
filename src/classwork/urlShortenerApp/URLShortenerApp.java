@@ -1,6 +1,5 @@
 package classwork.urlShortenerApp;
 
-import java.security.SecureRandom;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +8,6 @@ public class URLShortenerApp {
     private static final URLConverter converter = new URLConverter();
 
     private static final Scanner input = new Scanner(System.in);
-    private static final SecureRandom randInt = new SecureRandom();
 
     public static void main(String[] args) {
         appMain();
@@ -44,10 +42,10 @@ public class URLShortenerApp {
     private static void shortenURL() {
         System.out.println("Please enter your link below: ");
         String longURL = input.nextLine();
-        int requestKey = randInt.nextInt(1_000_000_000);
+
         if (converter.isValidURL(longURL)) {
-            converter.addURL(requestKey, longURL);
-            System.out.printf("%nHere's your short link: %s%n", converter.getShortURL(converter.getConvertedKey(requestKey)));
+            String shortURL = converter.getShortURL(longURL);
+            System.out.printf("%nHere's your short link: %s%n", shortURL);
         } else {
             System.out.println("Invalid link. Please ensure your link starts with 'http' or 'https'");
             shortenURL();
@@ -58,7 +56,7 @@ public class URLShortenerApp {
     private static void recoverURL() {
         System.out.println("Please enter your short link below: ");
         String shortURL = input.nextLine();
-        System.out.printf("%nHere's your web link: %s%n", converter.getURL(converter.getKey(shortURL)));
+        System.out.printf("%nHere's your web link: %s%n", converter.getURL(shortURL));
 
         appMain();
     }

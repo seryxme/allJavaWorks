@@ -1,5 +1,6 @@
 package classwork.urlShortenerApp;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,11 +16,16 @@ public class URLConverter {
         return urlMaps.size();
     }
 
-    public String getURL(Integer key) {
+    public String getURL(String shortURL) {
+        int key = getKey(shortURL);
         return urlMaps.get(key);
     }
 
-    public String getShortURL(String convertedKey) {
+    public String getShortURL(String url) {
+        SecureRandom randInt = new SecureRandom();
+        int requestKey = randInt.nextInt(1_000_000_000);
+        addURL(requestKey, url);
+        String convertedKey = getConvertedKey(requestKey);
         return "https://myurl.me/" + convertedKey;
     }
 

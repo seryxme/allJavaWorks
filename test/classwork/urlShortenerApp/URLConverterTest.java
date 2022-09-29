@@ -19,29 +19,29 @@ class URLConverterTest {
         assertEquals(1, converter.dataSize());
     }
 
-    @Test
-    void testThatSavedURLCanBeRetrieved() {
-        converter.addURL(0, "https://www.codecademy.com/articles/language/html-css");
+//    @Test
+//    void testThatSavedURLCanBeRetrieved() {
+//        converter.addURL(0, "https://www.codecademy.com/articles/language/html-css");
+//
+//        assertEquals("https://www.codecademy.com/articles/language/html-css", converter.getURL(0));
+//    }
 
-        assertEquals("https://www.codecademy.com/articles/language/html-css", converter.getURL(0));
-    }
-
-    @Test
-    void testThatMultipleURLsCanBeSaved() {
-        converter.addURL(0,"https://www.codecademy.com/articles/language/html-css");
-        converter.addURL(1,"https://www.codecademy.com/articles/subject/code-foundations");
-
-        assertEquals(2, converter.dataSize());
-    }
-
-    @Test
-    void testThatMultipleSavedURLsCanBeRetrievedByKey() {
-        converter.addURL(0, "https://www.codecademy.com/articles/language/html-css");
-        converter.addURL(1, "https://www.codecademy.com/articles/subject/code-foundations");
-
-        assertEquals("https://www.codecademy.com/articles/language/html-css", converter.getURL(0));
-        assertEquals("https://www.codecademy.com/articles/subject/code-foundations", converter.getURL(1));
-    }
+//    @Test
+//    void testThatMultipleURLsCanBeSaved() {
+//        converter.addURL(0,"https://www.codecademy.com/articles/language/html-css");
+//        converter.addURL(1,"https://www.codecademy.com/articles/subject/code-foundations");
+//
+//        assertEquals(2, converter.dataSize());
+//    }
+//
+//    @Test
+//    void testThatMultipleSavedURLsCanBeRetrievedByKey() {
+//        converter.addURL(0, "https://www.codecademy.com/articles/language/html-css");
+//        converter.addURL(1, "https://www.codecademy.com/articles/subject/code-foundations");
+//
+//        assertEquals("https://www.codecademy.com/articles/language/html-css", converter.getURL(0));
+//        assertEquals("https://www.codecademy.com/articles/subject/code-foundations", converter.getURL(1));
+//    }
 
     @Test
     void testThatShortURLCanBeGenerated() {
