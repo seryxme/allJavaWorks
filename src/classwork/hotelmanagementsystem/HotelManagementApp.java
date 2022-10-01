@@ -187,19 +187,63 @@ public class HotelManagementApp {
     }
 
     private static void checkRoom() {
+        System.out.println("Enter Room Number to check room details: ");
+        int roomNumber = optionReader.nextInt();
+        for(Room foundRoom : hotel.getAllRooms()) {
+            if (foundRoom.getRoomNumber() == roomNumber) {
+                System.out.println(foundRoom);
+                checkRoomOption();
+            }
+        }
+        System.out.println("Room not found.");
+        checkRoomOption();
+    }
+
+    private static void checkRoomOption() {
+        System.out.println("Do you want to check another room?\n1. Yes\n2. No");
+        int option = optionReader.nextInt();
+        if (option == 1) checkRoom();
+        else adminLogin();
     }
 
     private static void checkAvailableRooms() {
     }
 
     private static void getAllRooms() {
+        for (Room room : hotel.getAllRooms()) {
+            System.out.println(room);
+        }
+        adminLogin();
     }
 
 
     private static void getAllCustomers() {
+        for (Customer customer : hotel.getAllCustomers()) {
+            System.out.println(customer);
+        }
+        adminLogin();
     }
 
     private static void checkCustomer() {
+        System.out.println("Enter Customer ID: ");
+        int customerId = optionReader.nextInt();
+
+        for (Customer customer : hotel.getAllCustomers()) {
+            if (customer.getCustomerId() == customerId) {
+                System.out.println(customer);
+                checkCustomerOption();
+            }
+        }
+
+        System.out.println("Customer not found.");
+        checkCustomerOption();
+    }
+
+    private static void checkCustomerOption() {
+        System.out.println("Do you want to check another customer?\n1. Yes\n2. No");
+        int option = optionReader.nextInt();
+        if (option == 1) checkCustomer();
+        else adminLogin();
     }
 
     private static void checkoutCustomer() {
