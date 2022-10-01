@@ -13,6 +13,7 @@ public class HotelManagementApp {
 
     private static void appMenu() {
         System.out.printf("""
+                
                 WELCOME TO %s
                 
                 Please login:
@@ -42,6 +43,7 @@ public class HotelManagementApp {
 
         if (passcode > 10000 && passcode <20000) {
             System.out.println("""
+                
                 Welcome, Admin!
                 
                 What would you like to do?
@@ -70,6 +72,9 @@ public class HotelManagementApp {
             }
             appMenu();
         }
+
+        System.out.println("Incorrect passcode. Please try again.\n");
+        appMenu();
     }
 
     private static void customerLogin() {
@@ -84,8 +89,7 @@ public class HotelManagementApp {
                         What would you like to do?
                         1. Book Room
                         2. Check Available Rooms
-                        3. Make Payment
-                        4. View All Rooms
+                        3. View All Rooms
                         0. Exit
                         """, customer.getFullName());
                 int option = optionReader.nextInt();
@@ -94,8 +98,7 @@ public class HotelManagementApp {
                 switch (option) {
                     case 1 -> bookRoom(customer);
                     case 2 -> checkAvailableRooms();
-                    case 3 -> makePayment(customer);
-                    case 4 -> getAllRooms();
+                    case 3 -> getAllRooms();
                     case 0 -> appMenu();
                     default -> System.out.println("Invalid selection. Please try again.");
                 }
@@ -103,6 +106,7 @@ public class HotelManagementApp {
             }
         }
 
+        System.out.println("You're not yet registered. Please register.\n");
         registerCustomer();
     }
 
@@ -138,11 +142,42 @@ public class HotelManagementApp {
         adminLogin();
     }
 
-    private static void makePayment(Customer customer) {
+    private static void bookRoom(Customer customer) {
+        System.out.println("""
+                
+                Please choose a room:
+                1. Single Room
+                2. King Suite
+                3. Royal Suite
+                4. Presidential Suite
+                5. Penthouse Suite
+                0. Exit
+                """);
+        int option = optionReader.nextInt();
+        optionReader.nextLine();
 
+        switch (option) {
+            case 1 -> roomBooking(customer, "Single Room");
+            case 2 -> checkAvailableRooms();
+            case 3 -> getAllRooms();
+            case 0 -> appMenu();
+            default -> System.out.println("Invalid selection. Please try again.");
+        }
     }
 
-    private static void bookRoom(Customer customer) {
+    private static void roomBooking(Customer customer, String roomType) {
+        for (Room selectedRoom : hotel.getAllRooms()) {
+            if (Objects.equals(selectedRoom.getRoomType(), roomType)) {
+                System.out.printf("Please make payment of N%,f: ", selectedRoom.getRoomPrice());
+                double amount = optionReader.nextDouble();
+
+                hotel.makePayment(customer, selectedRoom, amount);
+                hotel.bookRoom(customer, selectedRoom);
+                customerLogin();
+            }
+        }
+        System.out.println("The selected room is unavailable. Please choose another.");
+        bookRoom(customer);
     }
 
     private static void checkRoom() {
