@@ -42,4 +42,14 @@ public class Room {
     public int getDurationLeft() {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                ROOM NO.: %d
+                ROOM TYPE: %s
+                ROOM PRICE: %f
+                ROOM AVAILABLE: %s
+                """, getRoomNumber(), getRoomType(), getRoomPrice(), isAvailable() ? "Yes": "No");
+    }
 }

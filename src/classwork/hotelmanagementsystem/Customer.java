@@ -57,4 +57,15 @@ public class Customer {
     public void setPaymentStatus(boolean status) {
         hasPaid = status;
     }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                CUSTOMER NO.: %d
+                CUSTOMER NAME: %s
+                CUSTOMER PHONE NUMBER: %s
+                CUSTOMER EMAIL: %s
+                CUSTOMER BOOKED ROOM: %s
+                """, getCustomerId(), getFullName(), getPhoneNumber(), getEmail(), getBookedRoom());
+    }
 }
