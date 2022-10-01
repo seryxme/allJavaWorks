@@ -6,7 +6,7 @@ public class Room {
     private double roomPrice;
     private boolean isAvailable = true;
 
-    public Room(int roomNumber, String roomType) {
+    public Room(int roomNumber, String roomType, double roomPrice) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
     }

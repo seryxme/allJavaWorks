@@ -137,7 +137,11 @@ public class HotelManagementApp {
         System.out.println("Enter room type: ");
         String roomType = optionReader.nextLine();
 
-        Room newRoom = new Room(roomNumber, roomType);
+        System.out.println("Enter room price: ");
+        double roomPrice = optionReader.nextDouble();
+
+        Room newRoom = new Room(roomNumber, roomType, roomPrice);
+        hotel.addRoom(newRoom);
 
         adminLogin();
     }
@@ -158,9 +162,11 @@ public class HotelManagementApp {
 
         switch (option) {
             case 1 -> roomBooking(customer, "Single Room");
-            case 2 -> checkAvailableRooms();
-            case 3 -> getAllRooms();
-            case 0 -> appMenu();
+            case 2 -> roomBooking(customer, "King Suite");
+            case 3 -> roomBooking(customer, "Royal Suite");
+            case 4 -> roomBooking(customer, "Presidential Suite");
+            case 5 -> roomBooking(customer, "Penthouse Suite");
+            case 0 -> customerLogin();
             default -> System.out.println("Invalid selection. Please try again.");
         }
     }

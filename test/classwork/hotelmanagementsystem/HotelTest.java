@@ -14,7 +14,7 @@ class HotelTest {
     @BeforeEach
     void setUp() {
         hotel = new Hotel("New World Hotel", "Yaba, Lagos");
-        room = new Room(001, "Exquisite");
+        room = new Room(001, "Exquisite", 10000.00);
         customer = new Customer("Dee Jay", "08012345678", "deejay@gmail.com");
         customer2 = new Customer("Tee Jay", "08012345890", "teejay@gmail.com");
     }
@@ -41,7 +41,6 @@ class HotelTest {
 
     @Test
     void testThatCustomerCanBookRoom_andRoomIsUnavailable() {
-        room.setRoomPrice(10000.00);
         hotel.addRoom(room);
         assertTrue(hotel.isAvailable(room));
 
@@ -54,7 +53,6 @@ class HotelTest {
 
     @Test
     void testThatRoomCannotBeBookedAfterBeingOccupied() {
-        room.setRoomPrice(10000.00);
         hotel.addRoom(room);
         assertTrue(hotel.isAvailable(room));
 
