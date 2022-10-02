@@ -1,5 +1,7 @@
 package classwork.hotelmanagementsystem;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -42,39 +44,45 @@ public class HotelManagementApp {
         optionReader.nextLine();
 
         if (passcode > 10000 && passcode <20000) {
-            System.out.println("""
-                
-                Welcome, Admin!
-                
-                What would you like to do?
-                1. Add Room
-                2. Register Customer
-                3. Check Room Status
-                4. View All Rooms
-                5. Check Customer Details
-                6. View All Customers
-                7. Checkout Customer
-                0. Exit
-                """);
-            int option = optionReader.nextInt();
-            optionReader.nextLine();
-
-            switch (option) {
-                case 1 -> addRoom();
-                case 2 -> registerCustomer();
-                case 3 -> checkRoom();
-                case 4 -> getAllRooms();
-                case 5 -> checkCustomer();
-                case 6 -> getAllCustomers();
-                case 7 -> checkoutCustomer();
-                case 0 -> appMenu();
-                default -> System.out.println("Invalid selection. Please try again.");
-            }
-            appMenu();
+            adminMenu();
         }
 
         System.out.println("Incorrect passcode. Please try again.\n");
         appMenu();
+    }
+
+    private static void adminMenu() {
+        System.out.println("""
+            
+            Welcome, Admin!
+            
+            What would you like to do?
+            1. Add Room
+            2. Register Customer
+            3. Check Room Status
+            4. View All Rooms
+            5. Check Customer Details
+            6. View All Customers
+            7. Checkout Customer
+            0. Exit
+            """);
+        int option = optionReader.nextInt();
+        optionReader.nextLine();
+
+        switch (option) {
+            case 1 -> addRoom();
+            case 2 -> registerCustomer();
+            case 3 -> checkRoom();
+            case 4 -> getAllRooms();
+            case 5 -> checkCustomer();
+            case 6 -> getAllCustomers();
+            case 7 -> checkoutCustomer();
+            case 0 -> appMenu();
+            default -> {
+                System.out.println("Invalid selection. Please try again.");
+                adminMenu();
+            }
+        }
     }
 
     private static void customerLogin() {
@@ -83,31 +91,37 @@ public class HotelManagementApp {
 
         for(Customer customer : hotel.getAllCustomers()) {
             if (Objects.equals(customer.getEmail(), email)) {
-                System.out.printf("""
-                        Welcome, %s!
-                                        
-                        What would you like to do?
-                        1. Book Room
-                        2. Check Available Rooms
-                        3. View All Rooms
-                        0. Exit
-                        """, customer.getFullName());
-                int option = optionReader.nextInt();
-                optionReader.nextLine();
-
-                switch (option) {
-                    case 1 -> bookRoom(customer);
-                    case 2 -> checkAvailableRooms();
-                    case 3 -> getAllRooms();
-                    case 0 -> appMenu();
-                    default -> System.out.println("Invalid selection. Please try again.");
-                }
-                appMenu();
+                customerMenu(customer);
             }
         }
 
         System.out.println("You're not yet registered. Please register.\n");
         registerCustomer();
+    }
+
+    private static void customerMenu(Customer customer) {
+        System.out.printf("""
+                Welcome, %s!
+                                
+                What would you like to do?
+                1. Book Room
+                2. Check Available Rooms
+                3. View All Rooms
+                0. Exit
+                """, customer.getFullName());
+        int option = optionReader.nextInt();
+        optionReader.nextLine();
+
+        switch (option) {
+            case 1 -> bookRoom(customer);
+            case 2 -> checkAvailableRooms(customer);
+            case 3 -> getAllRooms();
+            case 0 -> appMenu();
+            default -> {
+                System.out.println("Invalid selection. Please try again.");
+                customerMenu(customer);
+            }
+        }
     }
 
     private static void registerCustomer() {
@@ -124,9 +138,9 @@ public class HotelManagementApp {
 
         hotel.addCustomer(customer);
 
-        System.out.println("Customer successfully registered. Please login with your email.");
+        System.out.println("Customer successfully registered. Please login again.");
 
-        customerLogin();
+        appMenu();
     }
 
     private static void addRoom() {
@@ -143,7 +157,7 @@ public class HotelManagementApp {
         Room newRoom = new Room(roomNumber, roomType, roomPrice);
         hotel.addRoom(newRoom);
 
-        adminLogin();
+        adminMenu();
     }
 
     private static void bookRoom(Customer customer) {
@@ -166,7 +180,7 @@ public class HotelManagementApp {
             case 3 -> roomBooking(customer, "Royal Suite");
             case 4 -> roomBooking(customer, "Presidential Suite");
             case 5 -> roomBooking(customer, "Penthouse Suite");
-            case 0 -> customerLogin();
+            case 0 -> customerMenu(customer);
             default -> System.out.println("Invalid selection. Please try again.");
         }
     }
@@ -174,12 +188,15 @@ public class HotelManagementApp {
     private static void roomBooking(Customer customer, String roomType) {
         for (Room selectedRoom : hotel.getAllRooms()) {
             if (Objects.equals(selectedRoom.getRoomType(), roomType)) {
-                System.out.printf("Please make payment of N%,f: ", selectedRoom.getRoomPrice());
+                System.out.printf("Please make payment of N%,.2f: ", selectedRoom.getRoomPrice());
                 double amount = optionReader.nextDouble();
 
                 hotel.makePayment(customer, selectedRoom, amount);
                 hotel.bookRoom(customer, selectedRoom);
-                customerLogin();
+                System.out.println("Room booked successfully.\nDo you want to book another room?\n1. Yes\n2. No");
+                int option = optionReader.nextInt();
+                if (option == 1) bookRoom(customer);
+                else customerMenu(customer);
             }
         }
         System.out.println("The selected room is unavailable. Please choose another.");
@@ -203,17 +220,34 @@ public class HotelManagementApp {
         System.out.println("Do you want to check another room?\n1. Yes\n2. No");
         int option = optionReader.nextInt();
         if (option == 1) checkRoom();
-        else adminLogin();
+        else adminMenu();
     }
 
-    private static void checkAvailableRooms() {
+    private static void checkAvailableRooms(Customer customer) {
+        List<Room> availableRooms = new ArrayList<>();
+        for(Room foundRoom : hotel.getAllRooms()) {
+            if (foundRoom.isAvailable()) {
+                availableRooms.add(foundRoom);
+            }
+        }
+
+        if (availableRooms.size() != 0) {
+            System.out.println("AVAILABLE ROOMS\n");
+            for (Room availableRoom : availableRooms) {
+                System.out.println(availableRoom);
+            }
+            customerMenu(customer);
+        }
+        System.out.println("No available rooms at the moment. Please check back later.");
+        customerLogin();
+
     }
 
     private static void getAllRooms() {
         for (Room room : hotel.getAllRooms()) {
             System.out.println(room);
         }
-        adminLogin();
+        adminMenu();
     }
 
 
@@ -221,7 +255,7 @@ public class HotelManagementApp {
         for (Customer customer : hotel.getAllCustomers()) {
             System.out.println(customer);
         }
-        adminLogin();
+        adminMenu();
     }
 
     private static void checkCustomer() {
@@ -243,7 +277,7 @@ public class HotelManagementApp {
         System.out.println("Do you want to check another customer?\n1. Yes\n2. No");
         int option = optionReader.nextInt();
         if (option == 1) checkCustomer();
-        else adminLogin();
+        else adminMenu();
     }
 
     private static void checkoutCustomer() {
