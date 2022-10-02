@@ -9,6 +9,7 @@ public class Room {
     public Room(int roomNumber, String roomType, double roomPrice) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
+        this.roomPrice = roomPrice;
     }
 
     public boolean isAvailable() {
@@ -48,7 +49,7 @@ public class Room {
         return String.format("""
                 ROOM NO.: %d
                 ROOM TYPE: %s
-                ROOM PRICE: %f
+                ROOM PRICE: %,.2f
                 ROOM AVAILABLE: %s
                 """, getRoomNumber(), getRoomType(), getRoomPrice(), isAvailable() ? "Yes": "No");
     }

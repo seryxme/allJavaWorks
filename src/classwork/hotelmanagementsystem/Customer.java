@@ -66,6 +66,6 @@ public class Customer {
                 CUSTOMER PHONE NUMBER: %s
                 CUSTOMER EMAIL: %s
                 CUSTOMER BOOKED ROOM: %s
-                """, getCustomerId(), getFullName(), getPhoneNumber(), getEmail(), getBookedRoom());
+                """, getCustomerId(), getFullName(), getPhoneNumber(), getEmail(), getBookedRoom() == null ? "None" : getBookedRoom());
     }
 }

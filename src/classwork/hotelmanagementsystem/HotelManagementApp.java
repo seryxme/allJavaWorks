@@ -161,6 +161,11 @@ public class HotelManagementApp {
     }
 
     private static void bookRoom(Customer customer) {
+        if(customer.getBookedRoom() != null) {
+            System.out.println("You cannot book another room. Please login with another account to book a new room.");
+            customerLogin();
+        }
+
         System.out.println("""
                 
                 Please choose a room:
@@ -187,7 +192,7 @@ public class HotelManagementApp {
 
     private static void roomBooking(Customer customer, String roomType) {
         for (Room selectedRoom : hotel.getAllRooms()) {
-            if (Objects.equals(selectedRoom.getRoomType(), roomType)) {
+            if (Objects.equals(selectedRoom.getRoomType(), roomType) && selectedRoom.isAvailable()) {
                 System.out.printf("Please make payment of N%,.2f: ", selectedRoom.getRoomPrice());
                 double amount = optionReader.nextDouble();
 
@@ -244,6 +249,7 @@ public class HotelManagementApp {
     }
 
     private static void getAllRooms() {
+        System.out.println("ALL OUR ROOMS\n");
         for (Room room : hotel.getAllRooms()) {
             System.out.println(room);
         }
@@ -252,6 +258,7 @@ public class HotelManagementApp {
 
 
     private static void getAllCustomers() {
+        System.out.println("CUSTOMERS\n");
         for (Customer customer : hotel.getAllCustomers()) {
             System.out.println(customer);
         }
@@ -281,6 +288,18 @@ public class HotelManagementApp {
     }
 
     private static void checkoutCustomer() {
+        System.out.println("Enter Customer ID: ");
+        int customerId = optionReader.nextInt();
 
+        for (Customer customer : hotel.getAllCustomers()) {
+            if (customer.getCustomerId() == customerId) {
+                hotel.checkOutCustomer(customer, customer.getBookedRoom());
+                System.out.println("Customer successfully checked out.");
+                adminMenu();
+            }
+        }
+
+        System.out.println("Customer not found.");
+        adminMenu();
     }
 }

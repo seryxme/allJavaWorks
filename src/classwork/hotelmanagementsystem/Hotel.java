@@ -67,10 +67,8 @@ public class Hotel {
 
     public void bookRoom(Customer customer, Room room) {
         if (customer.hasPaid()) {
-            if(room.isAvailable()) {
-                room.setAvailable(false);
-                customer.setBookedRoom(room);
-            } else System.out.println("Room is already booked. Please choose another room.");
+            room.setAvailable(false);
+            customer.setBookedRoom(room);
         } else System.out.println("No payment made. Please make payment to book room.");
     }
 
@@ -86,6 +84,7 @@ public class Hotel {
         if (room.getRoomPrice() <= amountPaid) {
             customer.setPaymentStatus(true);
         }
+        else System.out.println("Insufficient payment for the room.");
     }
 
 
